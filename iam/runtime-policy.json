@@ -1,0 +1,89 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "BedrockInvoke",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": "arn:aws:bedrock:ap-northeast-1::foundation-model/anthropic.claude-3-sonnet-20240229-v1:0"
+    },
+    {
+      "Sid": "ReadOnlyAccess",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:Describe*",
+        "s3:List*",
+        "s3:Get*",
+        "lambda:List*",
+        "lambda:Get*",
+        "cloudwatch:Describe*",
+        "cloudwatch:Get*",
+        "cloudwatch:List*",
+        "rds:Describe*",
+        "dynamodb:Describe*",
+        "dynamodb:List*",
+        "ecs:Describe*",
+        "ecs:List*",
+        "eks:Describe*",
+        "eks:List*",
+        "elasticache:Describe*",
+        "elasticache:List*",
+        "elasticloadbalancing:Describe*",
+        "autoscaling:Describe*",
+        "cloudformation:Describe*",
+        "cloudformation:List*",
+        "cloudfront:List*",
+        "cloudfront:Get*",
+        "route53:List*",
+        "route53:Get*",
+        "sns:List*",
+        "sns:Get*",
+        "sqs:List*",
+        "sqs:Get*",
+        "apigateway:GET",
+        "iam:List*",
+        "iam:Get*",
+        "kms:List*",
+        "kms:Describe*",
+        "secretsmanager:List*",
+        "secretsmanager:Describe*",
+        "ssm:Describe*",
+        "ssm:List*",
+        "ssm:Get*",
+        "backup:List*",
+        "backup:Describe*",
+        "organizations:Describe*",
+        "organizations:List*",
+        "tag:Get*"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CostExplorerAccess",
+      "Effect": "Allow",
+      "Action": [
+        "ce:GetCostAndUsage",
+        "ce:GetCostForecast",
+        "ce:GetDimensionValues",
+        "ce:GetTags",
+        "ce:GetReservationUtilization",
+        "ce:GetSavingsPlansUtilization",
+        "ce:GetRightsizingRecommendation",
+        "ce:GetCostCategories"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudWatchLogsWrite",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:ap-northeast-1:546880033278:log-group:/aws/lambda/voice-aws-agent-*:*"
+    }
+  ]
+}

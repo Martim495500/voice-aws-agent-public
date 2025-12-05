@@ -1,0 +1,98 @@
+{
+  "type": "webhook",
+  "name": "AWSVoiceManagerAgent",
+  "description": "AWS Voice Manager Agent",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": "auto",
+  "assignments": [],
+  "tool_call_sound": null,
+  "tool_call_sound_behavior": "auto",
+  "execution_mode": "immediate",
+  "api_schema": {
+    "url": "https://YOUR_API_GATEWAY_URL/dev/voice-command",
+    "method": "POST",
+    "path_params_schema": [],
+    "query_params_schema": [],
+    "request_body_schema": {
+      "id": "body",
+      "type": "object",
+      "description": "ユーザーが音声で指示したAWS操作コマンド",
+      "properties": [
+        {
+          "id": "user_id",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "会話の中でユーザーが自分の名前や識別情報を提供した場合、それを抽出してください。",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": false
+        },
+        {
+          "id": "command",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "音声文字起こしから、ユーザーがAWSに対して実行したい操作を抽出してください。",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": true
+        },
+        {
+          "id": "operation_type",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "ユーザーの指示から操作タイプを判定してください。",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": ["resource_check", "cost_analysis", "service_status"],
+          "is_system_provided": false,
+          "required": false
+        },
+        {
+          "id": "target_service",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "ユーザーが指定したAWSサービス名を抽出してください。",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": false
+        },
+        {
+          "id": "timestamp",
+          "type": "string",
+          "value_type": "dynamic_variable",
+          "description": "リクエストのタイムスタンプ",
+          "dynamic_variable": "{{timestamp}}",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": true,
+          "required": false
+        }
+      ],
+      "required": false,
+      "value_type": "llm_prompt"
+    },
+    "request_headers": [
+      {
+        "type": "secret",
+        "name": "X-API-Key",
+        "secret_id": "YOUR_SECRET_ID"
+      },
+      {
+        "type": "value",
+        "name": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "auth_connection": null
+  },
+  "response_timeout_secs": 20,
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  }
+}
