@@ -5,13 +5,13 @@
             "Sid": "LambdaFullAccess",
             "Effect": "Allow",
             "Action": "lambda:*",
-            "Resource": "arn:aws:lambda:ap-northeast-1:546880033278:function:voice-aws-agent-*"
+            "Resource": "arn:aws:lambda:ap-northeast-1:YOUR_AWS_ACCOUNT_ID:function:voice-aws-agent-*"
         },
         {
             "Sid": "IAMFullAccess",
             "Effect": "Allow",
             "Action": "iam:*",
-            "Resource": "arn:aws:iam::546880033278:role/voice-aws-agent-*"
+            "Resource": "arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/voice-aws-agent-*"
         },
         {
             "Sid": "APIGatewayFullAccess",
@@ -24,8 +24,8 @@
             "Effect": "Allow",
             "Action": "logs:*",
             "Resource": [
-                "arn:aws:logs:ap-northeast-1:546880033278:log-group:/aws/lambda/voice-aws-agent-*",
-                "arn:aws:logs:ap-northeast-1:546880033278:log-group:/aws/lambda/voice-aws-agent-*:*"
+                "arn:aws:logs:ap-northeast-1:YOUR_AWS_ACCOUNT_ID:log-group:/aws/lambda/voice-aws-agent-*",
+                "arn:aws:logs:ap-northeast-1:YOUR_AWS_ACCOUNT_ID:log-group:/aws/lambda/voice-aws-agent-*:*"
             ]
         },
         {
