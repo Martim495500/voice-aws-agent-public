@@ -1,27 +1,43 @@
-# Terraform State（機密情報を含む）
+# ============================================
+# 機密情報・認証情報（絶対にコミットしない）
+# ============================================
+
+# Terraform State（AWSリソースIDや機密情報を含む）
 *.tfstate
 *.tfstate.*
+*.tfstate.backup
 
-# Terraform
+# Terraform変数ファイル（機密情報を含む可能性）
 *.tfvars
+*.tfvars.json
+terraform.tfvars
+terraform.tfvars.json
+
+# Terraformプラグイン・モジュール
 .terraform/
 .terraform.lock.hcl
+
+# Lambda デプロイパッケージ
 *.zip
 
-# ElevenLabs設定（機密情報）
+# ElevenLabs設定（API KeyやSecret IDを含む）
 elevenlabs-webhook-config.json
 
 # AWS認証情報
 *.pem
 *.key
 .aws/
+credentials
+config
 
-# ログファイル
-*.log
-
-# 環境変数
+# 環境変数ファイル
 .env
-.env.local
+.env.*
+.envrc
+
+# ============================================
+# 開発環境・ビルド成果物
+# ============================================
 
 # Python
 __pycache__/
@@ -29,16 +45,88 @@ __pycache__/
 *$py.class
 *.so
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 venv/
 ENV/
+env/
 
-# IDE
+# ログファイル
+*.log
+logs/
+
+# ============================================
+# IDE・エディタ設定
+# ============================================
+
+# VSCode
 .vscode/
+*.code-workspace
+
+# IntelliJ IDEA
 .idea/
+*.iml
+*.iws
+
+# Vim
 *.swp
 *.swo
 *~
+.netrwhist
 
-# OS
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================
+# OS生成ファイル
+# ============================================
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ============================================
+# その他
+# ============================================
+
+# バックアップファイル
+*.bak
+*.backup
+*.old
+*.orig
+
+# 一時ファイル
+*.tmp
+*.temp
+
+# テスト用ファイル（個人用）
+test-*
+scratch/
+playground/
